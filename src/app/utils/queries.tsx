@@ -1,3 +1,26 @@
+// POST TASK
+export const postTaskQuery = async (task: string) => {
+    try {
+      const response = await fetch('/api/task', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ task: task }),
+      });
+  
+      if (response.status === 200) {
+        const data = await response.json();
+        return data;
+      } else {
+        throw new Error('Failed to add task');
+      }
+    } catch (error) {
+      console.error('Failed to add task', error);
+      throw error;
+    }
+  };
+
 // GET TASKS 
 export const fetchTasksQuery = async () => {
     try {
@@ -8,12 +31,13 @@ export const fetchTasksQuery = async () => {
         },
       });
   
-      if (response.status !== 200) {
+      if (response.status === 200) {
+        console.log(' GET: successed!');
+        const data = await response.json();
+        return data.tasks;   
+      } else {
         throw new Error('GET: failed.');
       }
-  
-      const data = await response.json();
-      return data.tasks;
     } catch (error) {
       console.error('GET: error happen', error);
       throw error;
@@ -30,12 +54,13 @@ export const fetchTasksQuery = async () => {
         },
       });
   
-      if (response.status !== 200) {
+      if (response.status === 200) {
+        console.log(' DELETE: successed!');
+        const data = await response.json();
+        return data.tasks;
+      } else {
         throw new Error('DELETE: failed.');
       }
-  
-      const data = await response.json();
-      return data.tasks;
     } catch (error) {
       console.error('DELETE: error happen', error);
       throw error;
@@ -44,6 +69,7 @@ export const fetchTasksQuery = async () => {
   
 // EDIT TASK
   export const editTaskQuery = async (thisId:number, editedTask: string) => {
+    console.log('EDIT TASK');
     try {
       const response = await fetch(`/api/task?id=${thisId}`, {
         method: 'PATCH',
@@ -53,15 +79,36 @@ export const fetchTasksQuery = async () => {
         body: JSON.stringify({ task: editedTask }),
       });
   
-      if (response.status !== 200) {
+      if (response.status === 200) {
+        console.log('EDIT: successed!');
+      } else {
         throw new Error('EDIT: failed.');
       }
-  
-      console.log('EDIT: successed!');
-      // ここで必要に応じて何か追加の処理を行うことができます。
-  
     } catch (error) {
       console.error('EDIT: error happen', error);
+      throw error;
+    }
+  };
+  
+  // EDIT COMP
+  export const editCompQuery = async (thisId:number, thisComp: boolean) => {
+    console.log('EDIT COMP',thisComp);
+    try {
+      const response = await fetch(`/api/task?id=${thisId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ complete: thisComp }),
+      });
+  
+      if (response.status === 200) {
+        console.log('EDIT COMP: successed!');
+    } else {
+        throw new Error('EDIT COMP: failed.');
+      }
+    } catch (error) {
+      console.error('EDIT COMP: error happen', error);
       throw error;
     }
   };

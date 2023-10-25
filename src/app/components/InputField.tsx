@@ -5,9 +5,9 @@ type Input = {
 
 const InputField = ({ task, setTask }: Input) => {
 
-const handleInputChange = (e: { target: { value: string; }; }) => {
-    setTask(e.target.value);
-};
+    const handleInputChange = (e: { target: { value: string; }; }) => {
+        setTask(e.target.value);
+    };
 
     return (
     <>

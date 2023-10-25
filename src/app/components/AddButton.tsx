@@ -1,36 +1,31 @@
-import React from 'react'
-import axios from 'axios';
+import { postTaskQuery } from "../utils/queries";
 
 type AddButtonProps = {
     task: string, 
     setTask:(value:string)=> void, 
-    taskList: string[], 
     setTaskList:(value:string[]) => void,
 };
 
-const AddButton = ({ task, setTask, taskList, setTaskList }: AddButtonProps) => {
-    const purpose: string = 'Add Task';
+const AddButton = ({ task, setTask, setTaskList }: AddButtonProps) => {
 
     const addTaskHandler = async () => {
-        try {
-          const res = await axios.post('api/task', { task });
-          setTaskList(res.data);
-          setTask('');
-        } catch (error) {
-          console.error('failed to add task', error);
-        }  
-      }
+      try {
+        const newList = await postTaskQuery(task);
+        console.log(newList)
+        setTaskList(newList);
+        setTask('');
+      } catch (error) {
+        console.error('POST: error happen', error);
+      };    
+    };
     
   return (
     <>
-        <button onClick={addTaskHandler} className='border p-2 order-3'>
-            {purpose}
-        </button>
+      <button onClick={addTaskHandler} className='border p-2 order-3'>
+          Add Task
+      </button>
     </>
   );
 };
 
 export default AddButton
-
-// Add & Edit $ Deleteの３つの役割
-// ParamでPassingすることで使い分け

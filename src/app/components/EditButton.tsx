@@ -13,20 +13,20 @@ type TaskObject = {
 type EditButtonProps = {
     taskItem: TaskItem;
     editTaskOn: boolean;
-    setEditTaskOn:(value:boolean) => void;
     editedTask: string;
+    setEditTaskOn:(value:boolean) => void;    
     setEditedTask:(value:string) => void;
     setTaskList:(value:TaskObject) => void;
 }
 
-const EditButton = ({taskItem, editTaskOn, setEditTaskOn, editedTask, setEditedTask, setTaskList } :EditButtonProps) => {
+const EditButton = ({taskItem, editTaskOn, editedTask, setEditTaskOn, setEditedTask, setTaskList } :EditButtonProps) => {
   
   const thisId: number = taskItem.id;
   
   // EDIT TASK
   const editTaskHandler = async (thisId:number, editedTask: string) => {
     try {
-      const editTaskList = await editTaskQuery(thisId, editedTask);
+      await editTaskQuery(thisId, editedTask);
       const fetchNewList = await fetchTasksQuery();
       setTaskList({"tasks": fetchNewList});
     } catch (error) {
@@ -36,20 +36,15 @@ const EditButton = ({taskItem, editTaskOn, setEditTaskOn, editedTask, setEditedT
   
   //Open edit buttons / Open edit space 
   const editSpaceOpenHandler = () => {
-      if(editTaskOn === false) {
-        //1. Open 
-        setEditTaskOn(true);
-        console.log('EDIT 始める');
-        
-      } else if (editTaskOn === true ) {
-        // 3.Save 
-        console.log('これだよ新しいの',editedTask);
-        // PATCH data
-        editTaskHandler(thisId, editedTask);
-        setEditTaskOn(false);
-        console.log('EDIT閉めるよ');
-      }  
-    }
+    if(editTaskOn === false) {
+      // Open 
+      setEditTaskOn(true);
+    } else if (editTaskOn === true ) {
+      // PATCH DATA 
+      editTaskHandler(thisId, editedTask);
+      setEditTaskOn(false);
+    }  
+  }
 
   return (
     <div>
@@ -57,7 +52,6 @@ const EditButton = ({taskItem, editTaskOn, setEditTaskOn, editedTask, setEditedT
         <FaRegEdit />
         { editTaskOn ? <p>Complete to edit</p> : null}
       </div>
-
       { editTaskOn ? <EditCancelButton taskItem={taskItem} setEditedTask={setEditedTask} setEditTaskOn={setEditTaskOn} /> : null} 
     </div>
   )

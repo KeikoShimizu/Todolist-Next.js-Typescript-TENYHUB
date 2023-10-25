@@ -14,7 +14,6 @@ export default function Home() {
       <InputField task={task} setTask={setTask}/>
       <AddButton task={task} 
               setTask={setTask}  
-              taskList={taskList} 
               setTaskList={setTaskList}
       />
       <div className='flex flex-row'>

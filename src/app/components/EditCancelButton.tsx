@@ -12,11 +12,10 @@ type EditCancelButtonprops = {
     setEditTaskOn:(value:boolean) => void;
 }
 
-const EditCancelButton = ({taskItem, setEditedTask, setEditTaskOn }: EditCancelButtonprops) => {
+const EditCancelButton = ({ taskItem, setEditedTask, setEditTaskOn }: EditCancelButtonprops) => {
 
     //Cancel edit / Close edit buttons / Close edit space
     const cancelEditHandler = () => {
-        // 元の値に戻して閉める
         setEditedTask(taskItem.task);
         setEditTaskOn(false);
     }
@@ -26,7 +25,7 @@ const EditCancelButton = ({taskItem, setEditedTask, setEditTaskOn }: EditCancelB
           <FaRegHandPaper />
           <p>Cancel</p>
     </div> 
-  )
-}
+  );
+};
 
 export default EditCancelButton
