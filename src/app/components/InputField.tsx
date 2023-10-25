@@ -15,7 +15,7 @@ const InputField = ({ task, setTask }: Input) => {
                 value={task} 
                 onChange={handleInputChange}
                 placeholder="Please input your task?"
-                className="bg-blue-500 text-white px-4 py-2 order-1"
+                className="bg-blue-500 text-white px-4 py-2 order-1 h-16 w-full"
         />
     </>
   );

@@ -17,11 +17,13 @@ type EditButtonProps = {
     setEditTaskOn:(value:boolean) => void;    
     setEditedTask:(value:string) => void;
     setTaskList:(value:TaskObject) => void;
+    setMessage:(value: string) => void;
 }
 
-const EditButton = ({taskItem, editTaskOn, editedTask, setEditTaskOn, setEditedTask, setTaskList } :EditButtonProps) => {
+const EditButton = ({taskItem, editTaskOn, editedTask, setEditTaskOn, setEditedTask, setTaskList, setMessage } :EditButtonProps) => {
   
   const thisId: number = taskItem.id;
+  const originTask: string = taskItem.task;
   
   // EDIT TASK
   const editTaskHandler = async (thisId:number, editedTask: string) => {
@@ -29,6 +31,7 @@ const EditButton = ({taskItem, editTaskOn, editedTask, setEditTaskOn, setEditedT
       await editTaskQuery(thisId, editedTask);
       const fetchNewList = await fetchTasksQuery();
       setTaskList({"tasks": fetchNewList});
+      setMessage(`Task "${originTask}" is now editted as "${editedTask}"!` )
     } catch (error) {
       console.error('EDIT: error happen', error);
     }

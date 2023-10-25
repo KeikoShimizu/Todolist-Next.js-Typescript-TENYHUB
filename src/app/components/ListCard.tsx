@@ -14,12 +14,14 @@ type TaskObject = {
 }
 type ListCardProps = {
     key: number;
+    message: string;
     taskItem: TaskItem;
     taskList: TaskObject;
+    setMessage: (value:string) => void;
     setTaskList:(value:TaskObject) => void;
 }
 
-const ListCard = ({ key, taskItem, taskList, setTaskList }: ListCardProps) => {
+const ListCard = ({ key, taskItem, taskList, setTaskList, message, setMessage }: ListCardProps) => {
   const [editTaskOn, setEditTaskOn] = useState<boolean>(false);
   const [editedTask, setEditedTask] = useState<string>('');
 
@@ -72,6 +74,7 @@ const ListCard = ({ key, taskItem, taskList, setTaskList }: ListCardProps) => {
       <div className='flex flex-row'>
         <DeleteButton taskItem={taskItem}
                       taskList={taskList}
+                      setMessage={setMessage} 
                       setTaskList={setTaskList}
         />
         <EditButton taskItem={taskItem}
@@ -80,6 +83,7 @@ const ListCard = ({ key, taskItem, taskList, setTaskList }: ListCardProps) => {
                     setEditTaskOn={setEditTaskOn}
                     setEditedTask={setEditedTask}
                     setTaskList={setTaskList}
+                    setMessage={setMessage}
         />
       </div>
     </div>

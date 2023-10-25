@@ -2,12 +2,12 @@
   "tasks": [
     {
       "task": "Have parents and teacher meeting at vanhorne",
-      "complete": false,
+      "complete": true,
       "id": 9
     },
     {
       "task": "waaawwa",
-      "complete": false,
+      "complete": true,
       "id": 12
     },
     {
@@ -17,12 +17,12 @@
     },
     {
       "task": "Volunteering for hot lunch",
-      "complete": false,
+      "complete": true,
       "id": 14
     },
     {
       "task": "NONO",
-      "complete": false,
+      "complete": true,
       "id": 15
     },
     {
@@ -31,13 +31,13 @@
       "id": 16
     },
     {
-      "task": "night hockey driving to itslano beach with Andy and Taesu",
+      "task": "",
       "complete": false,
       "id": 17
     },
     {
       "task": "sawada",
-      "complete": true,
+      "complete": false,
       "id": 18
     },
     {
@@ -52,8 +52,18 @@
     },
     {
       "task": "MAyuko go to Kims market",
-      "complete": false,
+      "complete": true,
       "id": 21
+    },
+    {
+      "task": "KEIKO",
+      "complete": false,
+      "id": 22
+    },
+    {
+      "task": "YAMADA",
+      "complete": true,
+      "id": 25
     }
   ]
 }

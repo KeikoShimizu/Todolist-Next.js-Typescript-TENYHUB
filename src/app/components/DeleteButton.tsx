@@ -13,10 +13,11 @@ type TaskObject = {
 type DeleteButtonProps = {
   taskItem: TaskItem;
   taskList: TaskObject;
+  setMessage: (value:string) => void;
   setTaskList:(value:TaskObject) => void;
 }    
 
-const DeleteButton = ({ taskItem, taskList, setTaskList }: DeleteButtonProps) => {
+const DeleteButton = ({ taskItem, taskList, setTaskList, setMessage }: DeleteButtonProps) => {
 
   const thisId = taskItem.id;
   
@@ -30,6 +31,7 @@ const DeleteButton = ({ taskItem, taskList, setTaskList }: DeleteButtonProps) =>
     try {
       const updatedTaskList = await deleteTaskQuery(thisId);
       updateNewList(thisId);
+      setMessage(`"${taskItem.task}" is deleted from List.`);
     } catch (error) {
       console.error('DELETE: error happen', error);
     }

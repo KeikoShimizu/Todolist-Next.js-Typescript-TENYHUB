@@ -1,8 +1,8 @@
 "use client"
-import { Key, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { fetchTasksQuery } from "../utils/queries";
 import ListCard from "./ListCard";
-import TaskCounter from "./TaskCounter";
+import ListHeader from "./ListHeader";
 
 type TaskObject = {
     tasks: TaskItem[];
@@ -13,12 +13,15 @@ type TaskItem = {
     id: number;
 }
 type ListProps = {
-  taskList: TaskObject;
-  setTaskList:(value:TaskObject) => void;
+  message: string;
   listName: string;
+  taskList: TaskObject;
+  setMessage: (value:string) => void;
+  setTaskList:(value:TaskObject) => void; 
 }
 
-const List = ({ listName, taskList, setTaskList }: ListProps) => {
+const List = ({ listName, taskList, setTaskList, message, setMessage }: ListProps) => {
+  const [ selectAll, setSelectAll] = useState<boolean>(false);
 
   useEffect(() => {
     if(listName === "incomplete"){
@@ -41,28 +44,27 @@ const List = ({ listName, taskList, setTaskList }: ListProps) => {
       console.log('completed');
     }
   },[]);
-      
+    
   return (
     <div>
-      <div className="flex flex-row justify-between items-end">
-        <h2 className="text-bold text-2xl ">{ listName == "incomplete" ? "Tasks" : "Completed Tasks" }</h2>
-        { taskList && taskList.tasks ? <TaskCounter taskList={taskList} listName={listName}/> : null }
-      </div>
+      <ListHeader selectAll={selectAll} setSelectAll={setSelectAll} taskList={taskList} listName={listName}/>
       <div className="flex flex-col gap-2 md:grid grid-cols-2">
         { taskList && taskList.tasks ? (
-          taskList.tasks.map((item: TaskItem , i: number ) => {
+          taskList.tasks.slice().reverse().map((item: TaskItem , i: number ) => {
             if(listName === "incomplete" && item.complete === false) {
-        
               return  <ListCard key={i}
-                                taskList={taskList}
                                 taskItem={item}
+                                message={message} 
+                                taskList={taskList}
+                                setMessage={setMessage}
                                 setTaskList={setTaskList}
                       />
             } else if (listName === "complete" && item.complete === true) {
-        
               return  <ListCard key={i}
-                                taskList={taskList}
                                 taskItem={item}
+                                message={message} 
+                                taskList={taskList}
+                                setMessage={setMessage}
                                 setTaskList={setTaskList}
                       />
             }
