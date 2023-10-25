@@ -4,7 +4,7 @@ type SelectAllProps = {
 }
 const SelectAllCard = ({selectAll, setSelectAll}: SelectAllProps) => {
     const selectAllTaskHandler = () => {
-        if()
+        // if()
     }
 
   return (
