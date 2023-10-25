@@ -2,12 +2,12 @@
   "tasks": [
     {
       "task": "Have parents and teacher meeting at vanhorne",
-      "complete": true,
+      "complete": false,
       "id": 9
     },
     {
       "task": "waaawwa",
-      "complete": true,
+      "complete": false,
       "id": 12
     },
     {
@@ -37,17 +37,17 @@
     },
     {
       "task": "dinner with Jake and meeting new people",
-      "complete": false,
+      "complete": true,
       "id": 19
     },
     {
       "task": "Shapping to superstore",
-      "complete": false,
+      "complete": true,
       "id": 20
     },
     {
       "task": "MAyuko go to Kims market",
-      "complete": false,
+      "complete": true,
       "id": 21
     },
     {

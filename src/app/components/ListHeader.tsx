@@ -1,5 +1,5 @@
 import TaskCounter from "./TaskCounter";
-import SelectAllCard from "./SelectAllCard";
+import SelectAllButton from "./SelectAllButton";
 
 type TaskObject = {
     tasks: TaskItem[];
@@ -11,20 +11,20 @@ type TaskItem = {
 }
 type ListHeaderProps = {
     taskList: TaskObject;
-    selectAll: boolean;
-    setSelectAll:(value: boolean) => void;
+    setMessage: (value:string) => void;
+    setTaskList:(value:TaskObject) => void; 
     listName: string;
 }
 
-const ListHeader = ({selectAll, setSelectAll, taskList, listName }:ListHeaderProps) => {
+const ListHeader = ({ taskList, listName, setTaskList, setMessage }:ListHeaderProps) => {
   
     return (
     <div className="flex flex-row justify-between items-end mb-1">
         <div>
           <h2 className="text-bold text-2xl ">{ listName == "incomplete" ? "Tasks" : "Completed Tasks" }</h2>
-          <SelectAllCard selectAll={selectAll} setSelectAll={setSelectAll}/>
+            <SelectAllButton listName={listName} taskList={taskList} setTaskList={setTaskList} setMessage={setMessage}/>
         </div>
-        { taskList && taskList.tasks ? <TaskCounter taskList={taskList} listName={listName}/> : null }
+        { taskList && taskList.tasks ? <TaskCounter taskList={taskList} listName={listName} /> : null }
     </div>
   );
 };

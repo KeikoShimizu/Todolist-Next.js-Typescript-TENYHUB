@@ -35,11 +35,12 @@ const ListCard = ({ key, taskItem, taskList, setTaskList, message, setMessage }:
   // Change true once you click
   const handleCheckBox = async () => {
     try {
-      // 1.Edit
+      // 1.Change value of "complete"  
       await editCompQuery(thisId, !thisComp);
       // 2.Fetch　New Data
       const fetchNewList = await fetchTasksQuery();
       setTaskList({"tasks": fetchNewList});
+      setMessage(`"${taskItem.task}" is ${!thisComp ? "moved to Complete List" : "restored to Task List"}!`)
     } catch (error) {
       console.error('EDIT COMP: error happen', error);
     };

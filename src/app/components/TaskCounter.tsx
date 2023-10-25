@@ -14,7 +14,7 @@ type TaskCounterProps = {
     listName: string;
 }
 
-const TaskCounter = ({listName, taskList}: TaskCounterProps) => {
+const TaskCounter = ({listName, taskList }: TaskCounterProps) => {
     const [unCompTaskNbr, setUnCompTaskNbr] = useState<number>(0);
     const [compTaskNbr, setcompTaskNbr] = useState<number>(0);
 
