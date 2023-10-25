@@ -1,5 +1,5 @@
 "use client"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchTasksQuery } from "../utils/queries";
 import ListCard from "./ListCard";
 import ListHeader from "./ListHeader";
@@ -47,7 +47,7 @@ const List = ({ listName, taskList, setTaskList, message, setMessage }: ListProp
   return (
     <div>
       <ListHeader setMessage={setMessage} taskList={taskList} setTaskList={setTaskList} listName={listName}/>
-      <div className="flex flex-col gap-2 md:grid grid-cols-2">
+      <div className="flex flex-col gap-3 md:grid grid-cols-2">
         { taskList && taskList.tasks ? (
           taskList.tasks.slice().reverse().map((item: TaskItem , i: number ) => {
             if(listName === "incomplete" && item.complete === false) {
@@ -69,12 +69,10 @@ const List = ({ listName, taskList, setTaskList, message, setMessage }: ListProp
             }
             return null;
           })
-        ) : (
-          <p>{ listName == "incomplete" ? "No tasks to display" : "No Completed Tasks" }</p>
-        )}
+        ) :  null }
       </div>
     </div>
-  );
+  )
 };
 
 export default List

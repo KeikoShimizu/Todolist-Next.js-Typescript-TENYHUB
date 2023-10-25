@@ -48,7 +48,7 @@ const ListCard = ({ key, taskItem, taskList, setTaskList, message, setMessage }:
 
   return (
     <div key={key} className="flex flex-col border justify-between shadow-md animate-slideup">
-      <div className='flex gap-2 p-1'>
+      <div className='flex gap-2 p-1 h-[80px]'>
         <input  type="checkbox" 
                 id="completeCheckBox" 
                 onChange={handleCheckBox} 

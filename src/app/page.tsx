@@ -1,9 +1,10 @@
 "use client"
 import { useState } from 'react';
-import HeaderArea from './components/HeaderArea';
+import Header from './components/Header';
 import InputArea from './components/InputArea';
 import MessageArea from './components/MessageArea';
 import ListArea from './components/ListArea';
+import Footer from './components/Footer';
 
 export default function Home() {
   const [task, setTask] = useState<string>('');
@@ -12,17 +13,20 @@ export default function Home() {
   const [warning, setWarning] = useState<boolean>(false);
 
   return (
-    <main className='p-7 flex flex-col gap-5 mb-10'>
-      <HeaderArea />
-      <InputArea  task={task} 
-                  setTask={setTask} 
-                  setTaskList={setTaskList} 
-                  message={message} 
-                  setMessage={setMessage}
-                  setWarning={setWarning}
-      />
-      <MessageArea message={message} setMessage={setMessage} warning={warning}/>
-      <ListArea taskList={taskList} setTaskList={setTaskList} message={message} setMessage={setMessage}/>
-    </main>
+    <>
+      <Header />
+      <main className='p-7 flex flex-col gap-5 mb-10'>
+        <InputArea  task={task}
+                    setTask={setTask}
+                    setTaskList={setTaskList}
+                    message={message}
+                    setMessage={setMessage}
+                    setWarning={setWarning}
+        />
+        <MessageArea message={message} setMessage={setMessage} warning={warning}/>
+        <ListArea taskList={taskList} setTaskList={setTaskList} message={message} setMessage={setMessage}/>
+      </main>
+      <Footer />
+    </>
   );
 };

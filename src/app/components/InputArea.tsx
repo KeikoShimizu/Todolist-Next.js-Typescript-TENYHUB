@@ -15,7 +15,6 @@ const InputArea = ({ task, setTask, setTaskList, message, setMessage, setWarning
             <AddButton  task={task}
                         setTask={setTask}
                         setTaskList={setTaskList}
-                        message={message} 
                         setMessage={setMessage}
                         setWarning={setWarning}
             />

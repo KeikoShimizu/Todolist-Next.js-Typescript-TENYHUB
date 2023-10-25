@@ -2,37 +2,37 @@
   "tasks": [
     {
       "task": "Have parents and teacher meeting at vanhorne",
-      "complete": false,
+      "complete": true,
       "id": 9
     },
     {
       "task": "waaawwa",
-      "complete": false,
+      "complete": true,
       "id": 12
     },
     {
       "task": "Baking cookie for kids",
-      "complete": false,
+      "complete": true,
       "id": 13
     },
     {
       "task": "Volunteering for hot lunch",
-      "complete": false,
+      "complete": true,
       "id": 14
     },
     {
       "task": "NONO",
-      "complete": false,
+      "complete": true,
       "id": 15
     },
     {
       "task": "night hockey driving to itslano beach with Andy and Taesu",
-      "complete": false,
+      "complete": true,
       "id": 16
     },
     {
       "task": "kkk",
-      "complete": false,
+      "complete": true,
       "id": 18
     },
     {
@@ -52,8 +52,18 @@
     },
     {
       "task": "YAMADA",
-      "complete": false,
+      "complete": true,
       "id": 25
+    },
+    {
+      "task": "KYOUWA ELMERNONIHONGOCLASSNIIKIMASU",
+      "complete": true,
+      "id": 26
+    },
+    {
+      "task": "KeiKEIKOSHIMIZ",
+      "complete": false,
+      "id": 27
     }
   ]
 }
