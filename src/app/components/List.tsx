@@ -1,6 +1,6 @@
 "use client"
 import { Key, useEffect, useState } from "react";
-import axios from 'axios';
+import { fetchTasksQuery } from "../utils/queries";
 import ListCard from "./ListCard";
 
 type ListProps = {
@@ -18,29 +18,28 @@ type TaskItem = {
 }
 
 const List = ({ listName, taskList, setTaskList }: ListProps) => {
-  const [completeTask, setCompleteTask] = useState<boolean>(false);
-  const [compTasksList, setCompTasksList] = useState<string[]>([]);
 
     useEffect(() => {
       if(listName === "incomplete"){
         const primaryTaskList: TaskObject = { tasks: []};
+        
         setTaskList(primaryTaskList);
 
-        //GET TASKS
-        const fetchTasks = async () => {
+        const fetchTaskData = async () => {
           try {
-            const res = await axios.get('/taskList.json');
-            console.log(res.data.tasks);
-            setTaskList(res.data);
+            const tasksData = await fetchTasksQuery();
+            const newTaskList = { tasks : tasksData }
+            console.log('これ',newTaskList);
+            setTaskList(newTaskList);
           } catch (error) {
             console.error('Failed to fetch tasks', error);
-          } 
-        }
-        fetchTasks();
+          }
+        };
+
+        fetchTaskData();
       } if (listName === "complete") {
         console.log('終わってる');
       }
-        
     },[]);
       
     return (
@@ -52,17 +51,13 @@ const List = ({ listName, taskList, setTaskList }: ListProps) => {
             return  <ListCard  key={i}
                               taskList={taskList} 
                               taskItem={item} 
-                              completeTask={completeTask} 
                               setTaskList={setTaskList}
-                              setCompleteTask={setCompleteTask} 
                     />
           } else if (listName === "complete" && item.complete === true) {
             return  <ListCard key={i} 
                               taskList={taskList}
                               taskItem={item} 
-                              completeTask={completeTask}
                               setTaskList={setTaskList} 
-                              setCompleteTask={setCompleteTask} 
                     />
           }
           return null; 

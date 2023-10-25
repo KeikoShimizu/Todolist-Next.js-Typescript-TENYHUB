@@ -1,5 +1,6 @@
 "use client"
 import { ImBin } from 'react-icons/im';
+import { deleteTaskQuery } from '../utils/queries';
 
 type TaskItem = {
     task : string;
@@ -13,32 +14,24 @@ type DeleteButtonProps = {
     taskItem: TaskItem;
     taskList: TaskObject;
     setTaskList:(value:TaskObject) => void;
-    updateList:(method: string, thisId: number) => void;
 }    
-const DeleteButton = ({ taskItem, taskList, setTaskList, updateList }: DeleteButtonProps) => {
+const DeleteButton = ({ taskItem, taskList, setTaskList }: DeleteButtonProps) => {
 
     const thisId = taskItem.id;
-    const method: string = "Delete";
     
+    const updateNewList = (thisId: number) => {
+        const updatedData = taskList.tasks.filter(task => task.id !== thisId);
+        setTaskList({"tasks": updatedData});
+    }
+
     //DELETE TASK
     const deleteTaskHandler = async (thisId:number) => {
-      await fetch(`/api/task?id=${thisId}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-      .then (response => {
-        if (response.status === 200) {
-          console.log('DELETE: successed!');
-          updateList(method, thisId);
-        } else {
-          console.error('DELETE: failed.');
-        }
-      })
-      .catch(error => {
+      try {
+        const updatedTaskList = await deleteTaskQuery(thisId);
+        updateNewList(thisId);
+      } catch (error) {
         console.error('DELETE: error happen', error);
-      });
+      }
     }
 
   return (

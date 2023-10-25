@@ -60,16 +60,16 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         }
 
     } else if (req.method === 'PATCH') {
-        const taskId = req.query.id as string;
-        const updatedTask = req.body.editedTask as string;
+        const TaskId = req.query.id as string;
+        const editedTask = req.body.task as string;
 
         try {
           const data = await fs.readFile('public/taskList.json', 'utf8');
           const taskList = JSON.parse(data);
-          const taskIndex = taskList.tasks.findIndex((task: { id: number }) => task.id === parseInt(taskId, 10));
+          const taskIndex = taskList.tasks.findIndex((task: { id: number }) => task.id === parseInt(TaskId, 10));
             
             if (taskIndex !== -1) {
-              taskList.tasks[taskIndex].task = updatedTask;
+              taskList.tasks[taskIndex].task = editedTask;
               await fs.writeFile('public/taskList.json', JSON.stringify(taskList, null, 2));
               res.status(200).json(taskList);
             } else {

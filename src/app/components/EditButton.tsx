@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { FaRegEdit } from 'react-icons/fa';
+import { editTaskQuery, fetchTasksQuery } from '../utils/queries';
 import EditCancelButton from './EditCancelButton';
 
 type TaskItem = {
@@ -7,53 +7,44 @@ type TaskItem = {
     complete: boolean;
     id: number;
 }
-
+type TaskObject = {
+  tasks: TaskItem[];
+}
 type EditButtonProps = {
     taskItem: TaskItem;
     editTaskOn: boolean;
     setEditTaskOn:(value:boolean) => void;
     editedTask: string;
     setEditedTask:(value:string) => void;
-    updateList:(method: string, thisId: number) => void;
+    setTaskList:(value:TaskObject) => void;
 }
-const EditButton = ({taskItem, editTaskOn, setEditTaskOn, editedTask, setEditedTask, updateList} :EditButtonProps) => {
-  
-  const thisId = taskItem.id;
-  const method: string = "Edit";
 
+const EditButton = ({taskItem, editTaskOn, setEditTaskOn, editedTask, setEditedTask, setTaskList } :EditButtonProps) => {
+  
+  const thisId: number = taskItem.id;
+  
   // EDIT TASK
   const editTaskHandler = async (thisId:number, editedTask: string) => {
-    await fetch(`/api/task?id=${thisId}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    .then (response => {
-      if (response.status === 200) {
-        console.log('EDIT: successed!');
-        updateList(method, thisId);
-      } else {
-        console.error('EDIT: failed.');
-      }
-    })
-    .catch(error => {
+    try {
+      const editTaskList = await editTaskQuery(thisId, editedTask);
+      const fetchNewList = await fetchTasksQuery();
+      setTaskList({"tasks": fetchNewList});
+    } catch (error) {
       console.error('EDIT: error happen', error);
-    });
-  };  
+    }
+  }  
   
   //Open edit buttons / Open edit space 
-  const editSpaceOpenHandler = (thisId: number) => {
+  const editSpaceOpenHandler = () => {
       if(editTaskOn === false) {
-        //1. 開ける
+        //1. Open 
         setEditTaskOn(true);
         console.log('EDIT 始める');
-
+        
       } else if (editTaskOn === true ) {
         // 3.Save 
         console.log('これだよ新しいの',editedTask);
-        // inputからuseStateを持ってくる
-        // storeしたものをFetchした元のものから新しいものにPatchする（PATCH）
+        // PATCH data
         editTaskHandler(thisId, editedTask);
         setEditTaskOn(false);
         console.log('EDIT閉めるよ');
