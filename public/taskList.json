@@ -1,74 +1,24 @@
 {
   "tasks": [
     {
-      "task": "Class",
-      "complete": false,
-      "id": 1
-    },
-    {
       "task": "Sleep",
       "complete": true,
-      "id": 2
-    },
-    {
-      "task": "Keiko",
-      "complete": false,
-      "id": 3
+      "id": 1
     },
     {
       "task": "Shopping",
       "complete": true,
-      "id": 4
+      "id": 3
     },
     {
-      "task": "KEIKO SHIMIZU",
-      "complete": false,
-      "id": 5
-    },
-    {
-      "task": "YAMADA",
+      "task": "SASAKA",
       "complete": false,
       "id": 6
     },
     {
-      "task": "HOHONO",
+      "task": "MAYA",
       "complete": false,
       "id": 7
-    },
-    {
-      "task": "Nasa",
-      "complete": false,
-      "id": 8
-    },
-    {
-      "task": "kokona",
-      "complete": false,
-      "id": 9
-    },
-    {
-      "task": "Mama",
-      "complete": false,
-      "id": 10
-    },
-    {
-      "task": "Kodomo",
-      "complete": false,
-      "id": 11
-    },
-    {
-      "task": "KEIKO",
-      "complete": false,
-      "id": 12
-    },
-    {
-      "task": "MIKA",
-      "complete": false,
-      "id": 13
-    },
-    {
-      "task": "SAHARA",
-      "complete": false,
-      "id": 14
     }
   ]
 }

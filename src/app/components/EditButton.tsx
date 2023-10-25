@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { FaRegEdit } from 'react-icons/fa';
+import EditCancelButton from './EditCancelButton';
 
 type TaskItem = {
     task : string;
@@ -13,36 +14,60 @@ type EditButtonProps = {
     setEditTaskOn:(value:boolean) => void;
     editedTask: string;
     setEditedTask:(value:string) => void;
+    updateList:(method: string, thisId: number) => void;
 }
-const EditButton = ({taskItem, editTaskOn, setEditTaskOn, editedTask, setEditedTask} :EditButtonProps) => {
-    // console.log('Editするもの',taskItem.task);
-  const editTaskHandler = async () => {
-    try {
-      const updatedTask = {...taskItem, task: editedTask }
-      const res = await axios.patch(`api/task/${taskItem.id}`, updatedTask);
-      setEditedTask(res.data);
-      // setTask('');
-    } catch (error) {
-      console.error('failed to edit task', error);
-    }  
-  }  
+const EditButton = ({taskItem, editTaskOn, setEditTaskOn, editedTask, setEditedTask, updateList} :EditButtonProps) => {
   
-  const editBtnClickHandler = () => {
-      if(editTaskOn === false){
-        setEditTaskOn(true);
-        console.log('EDIT してる');
+  const thisId = taskItem.id;
+  const method: string = "Edit";
+
+  // EDIT TASK
+  const editTaskHandler = async (thisId:number, editedTask: string) => {
+    await fetch(`/api/task?id=${thisId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    .then (response => {
+      if (response.status === 200) {
+        console.log('EDIT: successed!');
+        updateList(method, thisId);
       } else {
-        // Patchさせる
-        editTaskHandler();
+        console.error('EDIT: failed.');
+      }
+    })
+    .catch(error => {
+      console.error('EDIT: error happen', error);
+    });
+  };  
+  
+  //Open edit buttons / Open edit space 
+  const editSpaceOpenHandler = (thisId: number) => {
+      if(editTaskOn === false) {
+        //1. 開ける
+        setEditTaskOn(true);
+        console.log('EDIT 始める');
+
+      } else if (editTaskOn === true ) {
+        // 3.Save 
+        console.log('これだよ新しいの',editedTask);
+        // inputからuseStateを持ってくる
+        // storeしたものをFetchした元のものから新しいものにPatchする（PATCH）
+        editTaskHandler(thisId, editedTask);
         setEditTaskOn(false);
-        console.log('EDIT完了');
+        console.log('EDIT閉めるよ');
       }  
     }
 
   return (
-    <div onClick={editBtnClickHandler} className='p-2 m-2 border'>
-      <FaRegEdit />
-      {editTaskOn ? <p>Complete to edit</p> : null}
+    <div>
+      <div onClick={editSpaceOpenHandler} className='flex flex-row p-2 m-2 border'>
+        <FaRegEdit />
+        { editTaskOn ? <p>Complete to edit</p> : null}
+      </div>
+
+      { editTaskOn ? <EditCancelButton taskItem={taskItem} setEditedTask={setEditedTask} setEditTaskOn={setEditTaskOn} /> : null} 
     </div>
   )
 }

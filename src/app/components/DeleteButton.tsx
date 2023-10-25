@@ -1,4 +1,4 @@
-import axios from 'axios';
+"use client"
 import { ImBin } from 'react-icons/im';
 
 type TaskItem = {
@@ -6,28 +6,43 @@ type TaskItem = {
     complete: boolean;
     id: number;
 }
-
+type TaskObject = {
+  tasks: TaskItem[];
+}
 type DeleteButtonProps = {
     taskItem: TaskItem;
+    taskList: TaskObject;
+    setTaskList:(value:TaskObject) => void;
+    updateList:(method: string, thisId: number) => void;
 }    
-const DeleteButton = ({taskItem}: DeleteButtonProps) => {
+const DeleteButton = ({ taskItem, taskList, setTaskList, updateList }: DeleteButtonProps) => {
 
-    const TaskId = taskItem.id;
+    const thisId = taskItem.id;
+    const method: string = "Delete";
     
-    const deleteTaskHandler = async (TaskId:number) => {
-      console.log(TaskId)  
-      try {
-            console.log('や');
-            
-            const res = await axios.delete(`http://localhost:3000/api/task/${TaskId}`);
-            console.log('ま');
-        } catch (error) {
-            console.error(' faild to delete this task!', error);
+    //DELETE TASK
+    const deleteTaskHandler = async (thisId:number) => {
+      await fetch(`/api/task?id=${thisId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .then (response => {
+        if (response.status === 200) {
+          console.log('DELETE: successed!');
+          updateList(method, thisId);
+        } else {
+          console.error('DELETE: failed.');
         }
+      })
+      .catch(error => {
+        console.error('DELETE: error happen', error);
+      });
     }
 
   return (
-    <div onClick={() => deleteTaskHandler(TaskId)} className='p-2 m-2 border'>
+    <div onClick={() => deleteTaskHandler(thisId)} className='p-2 m-2 border'>
       <ImBin />
     </div>
   )

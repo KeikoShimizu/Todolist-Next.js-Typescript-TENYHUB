@@ -26,7 +26,7 @@ const List = ({ listName, taskList, setTaskList }: ListProps) => {
         const primaryTaskList: TaskObject = { tasks: []};
         setTaskList(primaryTaskList);
 
-        //Fetch tasks from taskList.json for display
+        //GET TASKS
         const fetchTasks = async () => {
           try {
             const res = await axios.get('/taskList.json');
@@ -49,15 +49,19 @@ const List = ({ listName, taskList, setTaskList }: ListProps) => {
       { taskList && taskList.tasks ? (
         taskList.tasks.map((item: TaskItem , i: Key ) => {
           if(listName === "incomplete" && item.complete === false) {
-            return  <ListCard  key={i} 
+            return  <ListCard  key={i}
+                              taskList={taskList} 
                               taskItem={item} 
                               completeTask={completeTask} 
+                              setTaskList={setTaskList}
                               setCompleteTask={setCompleteTask} 
                     />
           } else if (listName === "complete" && item.complete === true) {
-            return  <ListCard  key={i} 
+            return  <ListCard key={i} 
+                              taskList={taskList}
                               taskItem={item} 
-                              completeTask={completeTask} 
+                              completeTask={completeTask}
+                              setTaskList={setTaskList} 
                               setCompleteTask={setCompleteTask} 
                     />
           }
