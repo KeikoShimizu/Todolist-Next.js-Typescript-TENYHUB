@@ -17,12 +17,12 @@
     },
     {
       "task": "Volunteering for hot lunch",
-      "complete": true,
+      "complete": false,
       "id": 14
     },
     {
       "task": "NONO",
-      "complete": true,
+      "complete": false,
       "id": 15
     },
     {
@@ -31,38 +31,28 @@
       "id": 16
     },
     {
-      "task": "",
-      "complete": false,
-      "id": 17
-    },
-    {
-      "task": "sawada",
+      "task": "kkk",
       "complete": false,
       "id": 18
     },
     {
       "task": "dinner with Jake and meeting new people",
-      "complete": true,
+      "complete": false,
       "id": 19
     },
     {
       "task": "Shapping to superstore",
-      "complete": true,
+      "complete": false,
       "id": 20
     },
     {
       "task": "MAyuko go to Kims market",
-      "complete": true,
+      "complete": false,
       "id": 21
     },
     {
-      "task": "KEIKO",
-      "complete": false,
-      "id": 22
-    },
-    {
       "task": "YAMADA",
-      "complete": true,
+      "complete": false,
       "id": 25
     }
   ]
