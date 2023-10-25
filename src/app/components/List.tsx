@@ -2,6 +2,7 @@
 import { Key, useEffect } from "react";
 import { fetchTasksQuery } from "../utils/queries";
 import ListCard from "./ListCard";
+import TaskCounter from "./TaskCounter";
 
 type TaskObject = {
     tasks: TaskItem[];
@@ -43,8 +44,11 @@ const List = ({ listName, taskList, setTaskList }: ListProps) => {
       
   return (
     <div>
-      <h2 className="text-bold text-2xl ">{ listName == "incomplete" ? "Tasks" : "Completed Tasks" }</h2>
-      <div className="flex flex-col gap-2 md:grid grid-cols-2 ">
+      <div className="flex flex-row justify-between items-end">
+        <h2 className="text-bold text-2xl ">{ listName == "incomplete" ? "Tasks" : "Completed Tasks" }</h2>
+        { taskList && taskList.tasks ? <TaskCounter taskList={taskList} listName={listName}/> : null }
+      </div>
+      <div className="flex flex-col gap-2 md:grid grid-cols-2">
         { taskList && taskList.tasks ? (
           taskList.tasks.map((item: TaskItem , i: number ) => {
             if(listName === "incomplete" && item.complete === false) {

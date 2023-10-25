@@ -21,7 +21,7 @@ const AddButton = ({ task, setTask, setTaskList }: AddButtonProps) => {
     
   return (
     <>
-      <button onClick={addTaskHandler} className='border p-2 order-3'>
+      <button onClick={addTaskHandler} className='border p-2 order-3 rounded-md shadow-md'>
           Add Task
       </button>
     </>

@@ -21,7 +21,7 @@ const EditCancelButton = ({ taskItem, setEditedTask, setEditTaskOn }: EditCancel
     }
 
   return (
-    <div onClick={cancelEditHandler} className='flex flex-row items-center gap-1 p-2 m-2 border rounded-md w-[133px]'>
+    <div onClick={cancelEditHandler} className='flex flex-row items-center gap-1 p-2 m-2 border rounded-md w-[133px] shadow-md'>
           <FaRegHandPaper />
           <p className='text-xs'>Cancel</p>
     </div> 

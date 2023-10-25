@@ -14,7 +14,7 @@ export default function Home() {
         <h1 className='fond-bold text-7xl'>To Do List</h1>
         <p>What is your task?</p>
       </div>
-      <div className='flex flex-row justify-center'>
+      <div className='flex flex-row justify-center gap-2'>
         <InputField task={task} setTask={setTask}/>
         <AddButton task={task}
                 setTask={setTask}

@@ -44,7 +44,7 @@ const ListCard = ({ key, taskItem, taskList, setTaskList }: ListCardProps) => {
   };
 
   return (
-    <div key={key} className="flex flex-col border shadow-md animate-slideup">
+    <div key={key} className="flex flex-col border justify-between shadow-md animate-slideup">
       <div className='flex gap-2 p-1'>
         <input  type="checkbox" 
                 id="completeCheckBox" 

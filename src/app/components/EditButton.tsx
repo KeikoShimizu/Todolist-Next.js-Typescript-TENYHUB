@@ -48,7 +48,7 @@ const EditButton = ({taskItem, editTaskOn, editedTask, setEditTaskOn, setEditedT
 
   return (
     <div className='flex flex-row'>
-      <div onClick={editSpaceOpenHandler} className='flex flex-row justify-center items-center gap-1 p-2 m-2 border rounded-md h-[34px]'>
+      <div onClick={editSpaceOpenHandler} className='flex flex-row justify-center items-center gap-1 p-2 m-2 border rounded-md h-[34px] shadow-md'>
         <FaRegEdit />
         { editTaskOn ? <p className='text-xs'>Complete to edit</p> : null}
       </div>
