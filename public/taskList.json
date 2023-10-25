@@ -1,27 +1,22 @@
 {
   "tasks": [
     {
-      "task": "KEiko",
-      "complete": false,
+      "task": "Have parents and teacher meeting at vanhorne",
+      "complete": true,
       "id": 9
     },
     {
-      "task": "ERIKA",
-      "complete": true,
-      "id": 10
-    },
-    {
       "task": "waaawwa",
-      "complete": false,
+      "complete": true,
       "id": 12
     },
     {
-      "task": "AMYUKA",
-      "complete": true,
+      "task": "Baking cookie for kids",
+      "complete": false,
       "id": 13
     },
     {
-      "task": "AMI",
+      "task": "Volunteering for hot lunch",
       "complete": false,
       "id": 14
     },
@@ -31,19 +26,29 @@
       "id": 15
     },
     {
-      "task": "KEIKOKOKO",
+      "task": "night hockey driving to itslano beach with Andy and Taesu",
       "complete": false,
       "id": 16
     },
     {
-      "task": "Yamada",
-      "complete": true,
+      "task": "night hockey driving to itslano beach with Andy and Taesu",
+      "complete": false,
       "id": 17
     },
     {
       "task": "sawada",
       "complete": true,
       "id": 18
+    },
+    {
+      "task": "dinner with Jake and meeting new people",
+      "complete": false,
+      "id": 19
+    },
+    {
+      "task": "Shapping to superstore",
+      "complete": true,
+      "id": 20
     }
   ]
 }

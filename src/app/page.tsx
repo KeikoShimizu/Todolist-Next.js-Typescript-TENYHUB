@@ -9,14 +9,19 @@ export default function Home() {
   const [taskList, setTaskList] = useState<string[]>([]);
 
   return (
-    <main>
-      <h1>To Do List</h1>
-      <InputField task={task} setTask={setTask}/>
-      <AddButton task={task} 
-              setTask={setTask}  
-              setTaskList={setTaskList}
-      />
-      <div className='flex flex-row'>
+    <main className='p-7 flex flex-col gap-5 mb-10'>
+      <div className='flex flex-col items-center'>
+        <h1 className='fond-bold text-7xl'>To Do List</h1>
+        <p>What is your task?</p>
+      </div>
+      <div className='flex flex-row justify-center'>
+        <InputField task={task} setTask={setTask}/>
+        <AddButton task={task}
+                setTask={setTask}
+                setTaskList={setTaskList}
+        />
+      </div>
+      <div className='flex flex-col mt-10 gap-5'>
         <List listName="incomplete" taskList={taskList} setTaskList={setTaskList} />
         <List listName="complete" taskList={taskList} setTaskList={setTaskList}/>
       </div>

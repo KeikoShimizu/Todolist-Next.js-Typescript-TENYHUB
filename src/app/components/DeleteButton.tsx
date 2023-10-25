@@ -36,7 +36,7 @@ const DeleteButton = ({ taskItem, taskList, setTaskList }: DeleteButtonProps) =>
   }
 
   return (
-    <div onClick={() => deleteTaskHandler(thisId)} className='p-2 m-2 border'>
+    <div onClick={() => deleteTaskHandler(thisId)} className='flex flex-row justify-center items-center gap-1 p-2 m-2 border rounded-md'>
       <ImBin />
     </div>
   )

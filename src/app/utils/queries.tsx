@@ -32,7 +32,6 @@ export const fetchTasksQuery = async () => {
       });
   
       if (response.status === 200) {
-        console.log(' GET: successed!');
         const data = await response.json();
         return data.tasks;   
       } else {
@@ -55,7 +54,6 @@ export const fetchTasksQuery = async () => {
       });
   
       if (response.status === 200) {
-        console.log(' DELETE: successed!');
         const data = await response.json();
         return data.tasks;
       } else {
@@ -92,7 +90,6 @@ export const fetchTasksQuery = async () => {
   
   // EDIT COMP
   export const editCompQuery = async (thisId:number, thisComp: boolean) => {
-    console.log('EDIT COMP',thisComp);
     try {
       const response = await fetch(`/api/task?id=${thisId}`, {
         method: 'PATCH',

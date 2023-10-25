@@ -32,7 +32,6 @@ const ListCard = ({ key, taskItem, taskList, setTaskList }: ListCardProps) => {
   
   // Change true once you click
   const handleCheckBox = async () => {
-    console.log(thisId, thisComp, !thisComp);
     try {
       // 1.Edit
       await editCompQuery(thisId, !thisComp);
@@ -45,27 +44,44 @@ const ListCard = ({ key, taskItem, taskList, setTaskList }: ListCardProps) => {
   };
 
   return (
-    <div key={key} className="border flex flex-row">
-      <input type="checkbox" id="completeCheckBox" onChange={handleCheckBox} checked={taskItem.complete}/>
-      { !editTaskOn ? 
-        <p>{taskItem.task}</p> 
-      : <input  type="text" 
-                value={editedTask} 
-                onChange={handleEditChange} 
-                placeholder={taskItem.task}
-                className='border'/>
-      }
-      <DeleteButton taskItem={taskItem} 
-                    taskList={taskList} 
+    <div key={key} className="flex flex-col border shadow-md animate-slideup">
+      <div className='flex gap-2 p-1'>
+        <input  type="checkbox" 
+                id="completeCheckBox" 
+                onChange={handleCheckBox} 
+                checked={taskItem.complete}
+                className='form-checkbox text-indigo-600 h-4 w-4'
+        />
+        { !editTaskOn ? (
+          <div className='flex gap-1'>
+            <h4 className='text-xs pt-1'>Task: </h4>
+            <p>{taskItem.task}</p>
+          </div>
+        ) : (
+        <div className='flex gap-1 w-full'>
+          <h4 className='text-xs pt-1'>Task: </h4>
+          <input  type="text"
+                    value={editedTask}
+                    onChange={handleEditChange}
+                    placeholder={taskItem.task}
+                    className='border h-11 w-full'
+              />
+        </div>
+        )}
+      </div>
+      <div className='flex flex-row'>
+        <DeleteButton taskItem={taskItem}
+                      taskList={taskList}
+                      setTaskList={setTaskList}
+        />
+        <EditButton taskItem={taskItem}
+                    editTaskOn={editTaskOn}
+                    editedTask={editedTask}
+                    setEditTaskOn={setEditTaskOn}
+                    setEditedTask={setEditedTask}
                     setTaskList={setTaskList}
-      />
-      <EditButton taskItem={taskItem} 
-                  editTaskOn={editTaskOn} 
-                  editedTask={editedTask} 
-                  setEditTaskOn={setEditTaskOn} 
-                  setEditedTask={setEditedTask}
-                  setTaskList={setTaskList}
-      />
+        />
+      </div>
     </div>
   );
 };
