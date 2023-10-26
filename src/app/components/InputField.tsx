@@ -10,16 +10,15 @@ const InputField = ({ task, setTask }: Input) => {
     };
 
     return (
-    <>
-        <input  
-                value={task} 
-                maxLength={40}
-                onChange={handleInputChange}
-                placeholder="Please input your task?"
-                className="border text-black px-4 py-2 w-full order-1 h-12 w- rounded-md whitespace-normal"
-        />
-    </>
-  );
+        <>
+            <input  value={task} 
+                    maxLength={40}
+                    onChange={handleInputChange}
+                    placeholder="Please input your task?"
+                    className="border text-black px-4 py-2 w-full order-1 h-12 w- rounded-md whitespace-normal"
+            />
+        </>
+    );
 };
 
 export default InputField

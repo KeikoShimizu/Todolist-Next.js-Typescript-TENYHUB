@@ -48,7 +48,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
               await fs.writeFile(filePath, JSON.stringify(taskList, null, 2));
               res.status(200).json(taskList);
             } else {
-              res.status(400).json({ error: 'Task not found!!!!!' });
+              res.status(400).json({ error: 'Task not found' });
             }
         } catch (error) {
           console.error('Errorだよ:', error);

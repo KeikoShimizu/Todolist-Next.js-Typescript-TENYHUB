@@ -43,31 +43,30 @@ export const fetchTasksQuery = async () => {
     }
   };
   
-  // DELETE TASK
-  export const deleteTaskQuery = async (thisId:number) => {
-    try {
-      const response = await fetch(`/api/task?id=${thisId}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-  
-      if (response.status === 200) {
-        const data = await response.json();
-        return data.tasks;
-      } else {
-        throw new Error('DELETE: failed.');
-      }
-    } catch (error) {
-      console.error('DELETE: error happen', error);
-      throw error;
+// DELETE TASK
+export const deleteTaskQuery = async (thisId:number) => {
+  try {
+    const response = await fetch(`/api/task?id=${thisId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.status === 200) {
+      const data = await response.json();
+      return data.tasks;
+    } else {
+      throw new Error('DELETE: failed.');
     }
-  };
+  } catch (error) {
+    console.error('DELETE: error happen', error);
+    throw error;
+  }
+};
   
 // EDIT TASK
   export const editTaskQuery = async (thisId:number, editedTask: string) => {
-    console.log('EDIT TASK');
     try {
       const response = await fetch(`/api/task?id=${thisId}`, {
         method: 'PATCH',
@@ -88,25 +87,24 @@ export const fetchTasksQuery = async () => {
     }
   };
   
-  // EDIT COMP
-  export const editCompQuery = async (thisId:number, thisComp: boolean) => {
-    try {
-      const response = await fetch(`/api/task?id=${thisId}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ complete: thisComp }),
-      });
-  
-      if (response.status === 200) {
-        console.log('EDIT COMP: successed!');
+// EDIT COMP
+export const editCompQuery = async (thisId:number, thisComp: boolean) => {
+  try {
+    const response = await fetch(`/api/task?id=${thisId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ complete: thisComp }),
+    });
+
+    if (response.status === 200) {
+      console.log('EDIT COMP: successed!');
     } else {
-        throw new Error('EDIT COMP: failed.');
-      }
-    } catch (error) {
-      console.error('EDIT COMP: error happen', error);
-      throw error;
+      throw new Error('EDIT COMP: failed.');
     }
-  };
-  
+  } catch (error) {
+    console.error('EDIT COMP: error happen', error);
+    throw error;
+  }
+};

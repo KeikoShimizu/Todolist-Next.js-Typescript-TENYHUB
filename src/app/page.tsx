@@ -7,10 +7,10 @@ import ListArea from './components/ListArea';
 import Footer from './components/Footer';
 
 export default function Home() {
-  const [task, setTask] = useState<string>('');
-  const [taskList, setTaskList] = useState<string[]>([]);
-  const [message, setMessage] = useState<string>('');
-  const [warning, setWarning] = useState<boolean>(false);
+  const [ task, setTask ] = useState<string>('');
+  const [ taskList, setTaskList ] = useState<string[]>([]);
+  const [ message, setMessage ] = useState<string>('');
+  const [ warning, setWarning ] = useState<boolean>(false);
 
   return (
     <>
@@ -19,12 +19,11 @@ export default function Home() {
         <InputArea  task={task}
                     setTask={setTask}
                     setTaskList={setTaskList}
-                    message={message}
                     setMessage={setMessage}
                     setWarning={setWarning}
         />
         <MessageArea message={message} setMessage={setMessage} warning={warning}/>
-        <ListArea taskList={taskList} setTaskList={setTaskList} message={message} setMessage={setMessage}/>
+        <ListArea taskList={taskList} setTaskList={setTaskList} setMessage={setMessage}/>
       </main>
       <Footer />
     </>

@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { fetchTasksQuery } from "../utils/queries";
 import ListCard from "./ListCard";
 import ListHeader from "./ListHeader";

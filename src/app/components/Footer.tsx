@@ -4,6 +4,6 @@ const Footer = () => {
       <p className="text-sm ">© 2023 All rights reserved Keiko Shimizu TO DO LIST</p>
     </footer>
   )
-}
+};
 
 export default Footer

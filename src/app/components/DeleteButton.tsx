@@ -3,7 +3,7 @@ import { ImBin } from 'react-icons/im';
 import { deleteTaskQuery } from '../utils/queries';
 
 type TaskItem = {
-  task : string;
+  task: string;
   complete: boolean;
   id: number;
 }
@@ -22,14 +22,14 @@ const DeleteButton = ({ taskItem, taskList, setTaskList, setMessage }: DeleteBut
   const thisId = taskItem.id;
   
   const updateNewList = (thisId: number) => {
-      const updatedData = taskList.tasks.filter(task => task.id !== thisId);
-      setTaskList({"tasks": updatedData});
+    const updatedData = taskList.tasks.filter(task => task.id !== thisId);
+    setTaskList({"tasks": updatedData});
   }
 
   //DELETE TASK
   const deleteTaskHandler = async (thisId:number) => {
     try {
-      const updatedTaskList = await deleteTaskQuery(thisId);
+      await deleteTaskQuery(thisId);
       updateNewList(thisId);
       setMessage(`"${taskItem.task}" is deleted from List.`);
     } catch (error) {
@@ -44,6 +44,6 @@ const DeleteButton = ({ taskItem, taskList, setTaskList, setMessage }: DeleteBut
       <ImBin />
     </div>
   )
-}
+};
 
 export default DeleteButton

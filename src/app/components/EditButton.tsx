@@ -3,7 +3,7 @@ import { editTaskQuery, fetchTasksQuery } from '../utils/queries';
 import CancelButton from './CancelButton';
 
 type TaskItem = {
-    task : string;
+    task: string;
     complete: boolean;
     id: number;
 }
@@ -35,19 +35,19 @@ const EditButton = ({taskItem, editTaskOn, editedTask, setEditTaskOn, setEditedT
     } catch (error) {
       console.error('EDIT: error happen', error);
     }
-  }  
+  };  
   
   //Open edit buttons / Open edit space 
   const editSpaceOpenHandler = () => {
     if(editTaskOn === false) {
-      // Open 
+      // Open Edit area
       setEditTaskOn(true);
     } else if (editTaskOn === true ) {
       // PATCH DATA 
       editTaskHandler(thisId, editedTask);
       setEditTaskOn(false);
     }  
-  }
+  };
 
   return (
     <div className='flex flex-row'>

@@ -1,7 +1,7 @@
 import { editCompQuery, fetchTasksQuery } from "../utils/queries";
 
 type TaskItem = {
-    task : string;
+    task: string;
     complete: boolean;
     id: number;
 }
@@ -15,12 +15,11 @@ type SelectAllProps = {
     setTaskList:(value:TaskObject) => void; 
 }
 
-const SelectAllButton = ({ taskList, listName, setTaskList, setMessage}: SelectAllProps) => {
+const SelectAllButton = ({ taskList, listName, setTaskList, setMessage }: SelectAllProps) => {
    
-    // All Uncomplete tasks　=> Complete List
+    // All uncomplete tasks　=> Complete List
     const checkAllTaskHandler = async () => {
         const uncompTasks = taskList.tasks.filter(task => task.complete === false );
-        console.log('falseのもの',uncompTasks);
         
         try {
             for (const task of uncompTasks) {
@@ -28,7 +27,6 @@ const SelectAllButton = ({ taskList, listName, setTaskList, setMessage}: SelectA
             };
 
             const fetchNewList = await fetchTasksQuery();
-            console.log(fetchNewList)
             setTaskList({"tasks": fetchNewList});
             setMessage(`${uncompTasks.length} Tasks are moved to Complete List!`)
         } catch (error) {
@@ -36,10 +34,9 @@ const SelectAllButton = ({ taskList, listName, setTaskList, setMessage}: SelectA
         };
     };
 
-    // All Complete tasks =>　Uncomplete List
+    // All complete tasks =>　Uncomplete List
     const UncheckAllTaskHandler = async () => {
         const compTasks = taskList.tasks.filter(task => task.complete === true );
-        console.log('trueのもの',compTasks);
         
         try {
             for (const task of compTasks) {
@@ -47,7 +44,6 @@ const SelectAllButton = ({ taskList, listName, setTaskList, setMessage}: SelectA
             };
 
             const fetchNewList = await fetchTasksQuery();
-            console.log(fetchNewList)
             setTaskList({"tasks": fetchNewList});
             setMessage(`${compTasks.length} Tasks are restored to Task List!`)
         } catch (error) {
@@ -55,14 +51,15 @@ const SelectAllButton = ({ taskList, listName, setTaskList, setMessage}: SelectA
         };
     };
 
-  return (
-    <>
-        <button onClick={listName === "incomplete" ? checkAllTaskHandler : UncheckAllTaskHandler} className="text-sm border-b-2 border-gray-300 text-gray-500 hover:border-blue-500 hover:text-blue-500 transition-all duration-300">
-            Select all
-        </button>
-        
-    </>
-  )
+    return (
+        <>
+            <button onClick={listName === "incomplete" ? checkAllTaskHandler : UncheckAllTaskHandler} 
+                    className="text-sm border-b-2 border-gray-300 text-gray-500 hover:border-blue-500 
+                    hover:text-blue-500 transition-all duration-300">
+                Select all
+            </button>
+        </>
+    )
 }
 
 export default SelectAllButton

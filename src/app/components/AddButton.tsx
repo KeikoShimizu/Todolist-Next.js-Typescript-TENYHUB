@@ -11,7 +11,7 @@ type AddButtonProps = {
 const AddButton = ({ task, setTask, setTaskList, setMessage, setWarning }: AddButtonProps) => {
 
     const addTaskHandler = async () => {
-      // Send waring if task is empty
+      // Send warning if task submit with empty
       if (!task) {
         setWarning(true);
         setMessage('Task is empty. Please enter your task before adding.');
@@ -31,7 +31,7 @@ const AddButton = ({ task, setTask, setTaskList, setMessage, setWarning }: AddBu
     <>
       <button onClick={addTaskHandler} className='border p-2 order-3 rounded-md shadow-md w-1/2 transition 
       duration-300 ease-in hover:bg-red-500 hover:text-white'>
-          Add Task
+          Create Task
       </button>
     </>
   );
