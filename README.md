@@ -1,4 +1,4 @@
-## ToDo List
+## ToDo List (Next.js & Typescript)
 
 Functionality
 - Add task and create task card from input area (limited 30 words)
