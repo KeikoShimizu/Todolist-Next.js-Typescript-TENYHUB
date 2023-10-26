@@ -14,14 +14,13 @@ type TaskObject = {
 }
 type ListCardProps = {
     key: number;
-    message: string;
     taskItem: TaskItem;
     taskList: TaskObject;
     setMessage: (value:string) => void;
     setTaskList:(value:TaskObject) => void;
 }
 
-const ListCard = ({ key, taskItem, taskList, setTaskList, message, setMessage }: ListCardProps) => {
+const ListCard = ({ key, taskItem, taskList, setTaskList, setMessage }: ListCardProps) => {
   const [editTaskOn, setEditTaskOn] = useState<boolean>(false);
   const [editedTask, setEditedTask] = useState<string>('');
 
@@ -47,14 +46,14 @@ const ListCard = ({ key, taskItem, taskList, setTaskList, message, setMessage }:
   };
 
   return (
-    <div key={key} className="flex flex-col border justify-between shadow-md animate-slideup">
+    <div key={key} className={`flex flex-col border justify-between shadow-md ${thisComp === true ? "bg-pink-50" : "bg-yellow-50"}`}>
       <div className='flex gap-2 p-1 h-[80px]'>
-        <input  type="checkbox" 
-                id="completeCheckBox" 
-                onChange={handleCheckBox} 
-                checked={taskItem.complete}
-                className='form-checkbox text-indigo-600 h-4 w-4'
-        />
+          <input  type="checkbox"
+                  id="completeCheckBox"
+                  onChange={handleCheckBox}
+                  checked={taskItem.complete}
+                  className='form-checkbox h-5 w-5 hover:cursor-pointer'
+          />
         { !editTaskOn ? (
           <div className='flex gap-1'>
             <h4 className='text-xs pt-1'>Task: </h4>
@@ -63,12 +62,14 @@ const ListCard = ({ key, taskItem, taskList, setTaskList, message, setMessage }:
         ) : (
         <div className='flex gap-1 w-full'>
           <h4 className='text-xs pt-1'>Task: </h4>
-          <input  type="text"
+            <input  type="text"
+                    id="addtaskplace"
+                    maxLength={40}
                     value={editedTask}
                     onChange={handleEditChange}
                     placeholder={taskItem.task}
-                    className='border h-11 w-full'
-              />
+                    className={`border-b-2 h-11 w-full placeholder-font-small ${thisComp == true ? "bg-pink-50" : "bg-yellow-50"} placeholder-text-xs `}
+            />
         </div>
         )}
       </div>

@@ -29,7 +29,8 @@ const AddButton = ({ task, setTask, setTaskList, setMessage, setWarning }: AddBu
     
   return (
     <>
-      <button onClick={addTaskHandler} className='border p-2 order-3 rounded-md shadow-md w-1/2 '>
+      <button onClick={addTaskHandler} className='border p-2 order-3 rounded-md shadow-md w-1/2 transition 
+      duration-300 ease-in hover:bg-red-500 hover:text-white'>
           Add Task
       </button>
     </>

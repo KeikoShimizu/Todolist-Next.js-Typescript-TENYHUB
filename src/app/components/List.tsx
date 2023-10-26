@@ -13,14 +13,13 @@ type TaskItem = {
     id: number;
 }
 type ListProps = {
-  message: string;
   listName: string;
   taskList: TaskObject;
   setMessage: (value:string) => void;
   setTaskList:(value:TaskObject) => void; 
 }
 
-const List = ({ listName, taskList, setTaskList, message, setMessage }: ListProps) => {
+const List = ({ listName, taskList, setTaskList, setMessage }: ListProps) => {
 
   useEffect(() => {
     if(listName === "incomplete"){
@@ -45,15 +44,14 @@ const List = ({ listName, taskList, setTaskList, message, setMessage }: ListProp
   },[]);
     
   return (
-    <div>
+    <div className="lg:w-1/2">
       <ListHeader setMessage={setMessage} taskList={taskList} setTaskList={setTaskList} listName={listName}/>
-      <div className="flex flex-col gap-3 md:grid grid-cols-2">
+      <div className="flex flex-col gap-3 md:grid md:grid-cols-2 md:gap-3 lg:flex 2xl:grid">
         { taskList && taskList.tasks ? (
           taskList.tasks.slice().reverse().map((item: TaskItem , i: number ) => {
             if(listName === "incomplete" && item.complete === false) {
               return  <ListCard key={i}
                                 taskItem={item}
-                                message={message} 
                                 taskList={taskList}
                                 setMessage={setMessage}
                                 setTaskList={setTaskList}
@@ -61,7 +59,6 @@ const List = ({ listName, taskList, setTaskList, message, setMessage }: ListProp
             } else if (listName === "complete" && item.complete === true) {
               return  <ListCard key={i}
                                 taskItem={item}
-                                message={message} 
                                 taskList={taskList}
                                 setMessage={setMessage}
                                 setTaskList={setTaskList}

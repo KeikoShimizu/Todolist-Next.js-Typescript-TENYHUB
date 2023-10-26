@@ -16,9 +16,9 @@ type ListAreaProps = {
 }
 const ListArea = ({taskList, setTaskList, message, setMessage }: ListAreaProps) => {
   return (
-    <div className='mt-10 sm:flex sm:flex-col lg:flex-row'>
-        <List listName="incomplete" taskList={taskList} setTaskList={setTaskList} message={message} setMessage={setMessage}/>
-        <List listName="complete" taskList={taskList} setTaskList={setTaskList} message={message} setMessage={setMessage}/>
+    <div className='mt-10 flex flex-col gap-20 sm:flex sm:flex-col sm:gap-10 lg:flex-row lg:gap-10'>
+        <List listName="incomplete" taskList={taskList} setTaskList={setTaskList} setMessage={setMessage}/>
+        <List listName="complete" taskList={taskList} setTaskList={setTaskList} setMessage={setMessage}/>
     </div>
   )
 }

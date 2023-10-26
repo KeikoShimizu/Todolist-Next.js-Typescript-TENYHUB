@@ -36,9 +36,11 @@ const DeleteButton = ({ taskItem, taskList, setTaskList, setMessage }: DeleteBut
       console.error('DELETE: error happen', error);
     }
   }
-
+  
   return (
-    <div onClick={() => deleteTaskHandler(thisId)} className='flex flex-row justify-center items-center gap-1 p-2 m-2 border rounded-md shadow-md'>
+    <div onClick={() => deleteTaskHandler(thisId)} className='fflex flex-row justify-center items-center 
+    gap-1 p-2 m-2 border bg-white rounded-md shadow-md transition duration-300 ease-in hover:bg-darker-green hover:text-white 
+    hover:fill-current'>
       <ImBin />
     </div>
   )

@@ -1,6 +1,6 @@
 import { FaRegEdit } from 'react-icons/fa';
 import { editTaskQuery, fetchTasksQuery } from '../utils/queries';
-import EditCancelButton from './EditCancelButton';
+import CancelButton from './CancelButton';
 
 type TaskItem = {
     task : string;
@@ -51,11 +51,13 @@ const EditButton = ({taskItem, editTaskOn, editedTask, setEditTaskOn, setEditedT
 
   return (
     <div className='flex flex-row'>
-      <div onClick={editSpaceOpenHandler} className='flex flex-row justify-center items-center gap-1 p-2 m-2 border rounded-md h-[34px] shadow-md'>
+      <div onClick={editSpaceOpenHandler} className="flex flex-row justify-center items-center border bg-white gap-1 p-2 m-2 
+      rounded-md h-[34px] shadow-md transition duration-300 ease-in hover:bg-orange-500 hover: border-color-orange hover:text-white 
+      hover:border-transparent} ">
         <FaRegEdit />
         { editTaskOn ? <p className='text-xs'>Complete to edit</p> : null}
       </div>
-      { editTaskOn ? <EditCancelButton taskItem={taskItem} setEditedTask={setEditedTask} setEditTaskOn={setEditTaskOn} /> : null} 
+      { editTaskOn ? <CancelButton taskItem={taskItem} setEditedTask={setEditedTask} setEditTaskOn={setEditTaskOn} /> : null} 
     </div>
   )
 }
