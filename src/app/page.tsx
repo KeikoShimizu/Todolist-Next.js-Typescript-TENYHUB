@@ -8,9 +8,9 @@ import Footer from './components/Footer';
 
 export default function Home() {
   const [ task, setTask ] = useState<string>('');
-  const [ taskList, setTaskList ] = useState<string[]>([]);
   const [ message, setMessage ] = useState<string>('');
   const [ warning, setWarning ] = useState<boolean>(false);
+  const [ taskList, setTaskList ] = useState<string[]>([]);
 
   return (
     <>

@@ -6,44 +6,34 @@
       "id": 9
     },
     {
-      "task": "waaawwa",
+      "task": "Clean up room and kitchen & dishes",
       "complete": true,
       "id": 12
     },
     {
-      "task": "night hockey driving to itslano beach with Andy and Taesu",
-      "complete": true,
-      "id": 16
-    },
-    {
-      "task": "kkk",
-      "complete": false,
-      "id": 18
-    },
-    {
       "task": "dinner with Jake and meeting new people",
-      "complete": false,
+      "complete": true,
       "id": 19
     },
     {
-      "task": "Shapping to superstore",
-      "complete": false,
-      "id": 20
-    },
-    {
-      "task": "asdksjdlasjdmxdifidkjdhfkdjfhdkfjhsdjflk",
+      "task": "Book flight to Japan",
       "complete": false,
       "id": 21
     },
     {
       "task": "I have more than anyone else",
-      "complete": true,
+      "complete": false,
       "id": 22
     },
     {
-      "task": "asdsdfldkjldfkjsdl;fkjdkgjdfgbjfdhgldskj",
+      "task": "Go to shopping with Maria ",
       "complete": false,
       "id": 24
+    },
+    {
+      "task": "Running 20 min and push up 30 min",
+      "complete": false,
+      "id": 25
     }
   ]
 }
