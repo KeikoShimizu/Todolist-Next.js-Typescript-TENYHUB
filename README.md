@@ -1,14 +1,11 @@
-＜h2>ToDo List＜/h2>
-Functionalites
+## ToDo List
+Functionality
 - Add task and create task card from input area (limited 30 words)
 - Edit task from task card
 - Delete task card
 - Click checkbox in order to move card to complete task list
-- Once click button to move all cards to other list
+- Once click button to move all cards to other list (Select all button)
 - Recognize the number of tasks with the task counter
-
-
-
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
