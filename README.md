@@ -1,5 +1,4 @@
 ## ToDo List
-<img width="1659" alt="Screenshot 2023-10-25 at 10 45 53 PM" src="https://github.com/KeikoShimizu/Todolist-Next.js-Typescript-TENYHUB/assets/106935804/64f34390-6683-4e0b-8118-9fd03a1689fd">
 
 Functionality
 - Add task and create task card from input area (limited 30 words)
