@@ -1,4 +1,4 @@
-ToDo List
+＜h2>ToDo List＜/h2>
 Functionalites
 - Add task and create task card from input area (limited 30 words)
 - Edit task from task card
