@@ -8,6 +8,9 @@ Functionality
 - Move all cards to other list at once ("Select all" button)
 - Recognize the number of tasks with the task counter
 
+<img width="1659" alt="Screenshot 2023-10-25 at 10 45 53 PM" src="https://github.com/KeikoShimizu/Todolist-Next.js-Typescript-TENYHUB/assets/106935804/fa30ded0-cb04-4fbb-9eec-5e843cfee137">
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
